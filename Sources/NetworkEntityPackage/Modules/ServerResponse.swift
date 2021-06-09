@@ -7,12 +7,12 @@
 
 import Foundation
 
-final public class ServerResponse: Codable, Error {
-    public let cod: String?
+public struct ServerResponse: Codable, Error {
     public let message: String?
+    public let errorCode: String?
 
-    public init(cod: String? = nil, message: String? = nil) {
-        self.cod = cod
+    public init(message: String? = nil, errorCode: String? = nil) {
+        self.errorCode = errorCode
         self.message = message
         
     }
