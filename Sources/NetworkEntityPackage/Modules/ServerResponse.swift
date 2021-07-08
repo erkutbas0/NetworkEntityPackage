@@ -9,9 +9,9 @@ import Foundation
 
 public struct ServerResponse: Codable, Error {
     public let message: String?
-    public let errorCode: String?
+    public let errorCode: Int?
 
-    public init(message: String? = nil, errorCode: String? = nil) {
+    public init(message: String? = nil, errorCode: Int? = nil) {
         self.errorCode = errorCode
         self.message = message
         
