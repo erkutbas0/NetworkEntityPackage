@@ -21,7 +21,7 @@ public struct ErrorResponse: Codable, Error {
         
     }
     
-    mutating func setApiConnectionErrorType(by value: ApiConnectionErrorType) -> Self {
+    public mutating func setApiConnectionErrorType(by value: ApiConnectionErrorType) -> Self {
         self.apiConnectionErrorType = value
         return self
     }
