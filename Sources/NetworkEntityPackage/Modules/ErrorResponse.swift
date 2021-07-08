@@ -7,14 +7,27 @@
 
 import Foundation
 
-public struct ErrorResponse: Error {
+public struct ErrorResponse: Codable, Error {
     public let serverResponse: ServerResponse?
-    public let apiConnectionErrorType: ApiConnectionErrorType?
+    public var apiConnectionErrorType: ApiConnectionErrorType?
 
+    public init(serverResponse: ServerResponse? = nil) {
+        self.serverResponse = serverResponse
+    }
+    
     public init(serverResponse: ServerResponse? = nil, apiConnectionErrorType: ApiConnectionErrorType? = nil) {
         self.serverResponse = serverResponse
         self.apiConnectionErrorType = apiConnectionErrorType
         
+    }
+    
+    mutating func setApiConnectionErrorType(by value: ApiConnectionErrorType) -> Self {
+        self.apiConnectionErrorType = value
+        return self
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case serverResponse = "error"
     }
 
 }
